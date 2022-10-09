@@ -48,8 +48,14 @@ alter table employee_payroll add address varchar(250) after phone_number;
 alter table employee_payroll add department varchar(250) not null after address;
 alter table employee_payroll alter address set default 'TBD';
 
+-- to extend employee_payroll table to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
 alter table employee_payroll rename column salary to basic_pay;
 alter table employee_payroll add deductions double not null after basic_pay;
 alter table employee_payroll add taxable_pay double not null after deductions;
 alter table employee_payroll add tax double not null after taxable_pay;
 alter table employee_payroll add net_pay double not null after tax;
+
+-- Ability to make Terissa as part of Sales and Marketing Department
+
+update employee_payroll set department='sales' where name='terissa';
+insert into employee_payroll (name,department,gender,basic_pay,deductions,taxable_pay,tax,net_pay,startdate,starttime) values ('terissa','marketting','F',30000000.00,10000000.00,20000000.00,5000000.00,15000000.00,'2018-08-10','06:02');
