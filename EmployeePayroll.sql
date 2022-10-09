@@ -40,3 +40,10 @@ select min(salary) from employee_payroll where gender = 'f' group by gender;
 select max(salary) from employee_payroll where gender = 'm' group by gender;
 select count(salary) from employee_payroll where gender = 'f' group by gender;
 
+-- Ability to extend employee_payroll data like employee phone, address and department,
+-- Ensure employee department is non nullable fields
+-- Add Default Value for address field
+alter table employee_payroll add phone_number varchar(250) after name;
+alter table employee_payroll add address varchar(250) after phone_number;
+alter table employee_payroll add department varchar(250) not null after address;
+alter table employee_payroll alter address set default 'TBD';
