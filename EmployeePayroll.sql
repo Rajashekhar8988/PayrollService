@@ -32,5 +32,11 @@ Select * from employee_payroll where start between cast('2018-01-01'as date) and
 alter table employee_payroll add gender char(1) after name;
 update employee_payroll set gender='M' where name='Bill' or name ='Charlie';
 
-
+-- using database functions sum, avg, min, max, count
+-- use GROUP BY GENDER grouping to get the result
+select sum(salary) from employee_payroll where gender = 'f' group by gender;
+select avg(salary) from employee_payroll where gender = 'm' group by gender;
+select min(salary) from employee_payroll where gender = 'f' group by gender;
+select max(salary) from employee_payroll where gender = 'm' group by gender;
+select count(salary) from employee_payroll where gender = 'f' group by gender;
 
