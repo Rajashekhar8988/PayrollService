@@ -1,7 +1,6 @@
 -- to create a database on sql server
-create database payroll_service;
-
 -- to use the database
+create database payroll_service;
 use payroll_service;
 
 -- create employee payroll table with columns id, name, salary and start date as column. Note Id is set to auto increment.
@@ -22,6 +21,12 @@ insert into employee_payroll ( name,salry,dateTime ) values
        
 -- to retrieve data from employee_payroll
 Select * from employee_payroll;
+
+-- to select a particular salary by using its name
+-- Using Select query with Where condition View employees between start dates
+select salary from employee_payroll where name = 'bill';
+Select * from employee_payroll where start between cast('2018-01-01'as date) and date(now());
+
 
 
 
