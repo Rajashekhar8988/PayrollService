@@ -14,5 +14,11 @@ dateTime     datetime not null,
 primary key  (id)
 );
 
+-- inserting the values into the table employee_payroll
+insert into employee_payroll ( name,salry,dateTime ) values
+       ( 'Bill', 100000.00, '2018-01-03 12:34:09'),
+       ( 'Mark', 200000.00, '2019-11-13 11:14:29'),
+       ( 'Charlie', 300000.00, '2020-05-21 10:36:05');
+
 
 
