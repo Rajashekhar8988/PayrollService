@@ -4,7 +4,7 @@ create database payroll_service;
 use payroll_service;
 
 -- create employee payroll table with columns id, name, salary and start date as column. Note Id is set to auto increment.
-create table employee_roll
+create table employee_payroll
 (
 id           int unsigned not null auto_increment,
 name         varchar(150) not null,
@@ -14,7 +14,7 @@ primary key  (id)
 );
 
 -- inserting the values into the table employee_payroll
-insert into employee_payroll ( name,salry,dateTime ) values
+insert into employee_payroll ( name,salary,dateTime ) values
        ( 'Bill', 100000.00, '2018-01-03 12:34:09'),
        ( 'Mark', 200000.00, '2019-11-13 11:14:29'),
        ( 'Charlie', 300000.00, '2020-05-21 10:36:05');
@@ -58,3 +58,21 @@ alter table employee_payroll add net_pay double not null after tax;
 -- Ability to make Terissa as part of Sales and Marketing Department
 update employee_payroll set department='sales' where name='terissa';
 insert into employee_payroll (name,department,gender,basic_pay,deductions,taxable_pay,tax,net_pay,startdate,starttime) values ('terissa','marketting','F',30000000.00,10000000.00,20000000.00,5000000.00,15000000.00,'2018-08-10','06:02');
+
+-- creating a new table with employee department having employee id and department id
+create table Employee_Department
+(
+EmployeeId           int unsigned not null auto_increment,
+DepartmentId         int(20) not null,
+foreign key  (EmployeeId) references employee_payroll (id)
+);
+
+-- add insert values to employee department table 
+insert into employee_department (DepartmentId) values(305);
+insert into employee_department (DepartmentId) values(306);
+insert into employee_department (DepartmentId) values(307);
+
+-- to retrieve data from employee department table 
+select * from employee_department;
+
+
